@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {actionCreator, ActionTypes} from '../../AppActions';
 import {Alert} from 'react-native';
 import Dashboard from '.';
-import {DashboardActionTypes} from './actions';
 
 const mapStateToProps = state => ({
   dashboardState: state.dashboardState,

@@ -15,7 +15,6 @@ const AuthStack = createStackNavigator(
 const DashboardStack = createStackNavigator(
   {
     Dashboard,
-    //Add more screens here
   },
   {
     headerMode: 'none',

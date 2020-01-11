@@ -2,30 +2,24 @@ import React, {PureComponent} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
-  StatusBar,
-  Button,
   FlatList,
-  TouchableHighlight,
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
 import {BarChart} from 'react-native-chart-kit';
-
 import {NavigationNativeContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import IonIcons from 'react-native-vector-icons/Ionicons';
-import AsyncStorage from '@react-native-community/async-storage';
 import GRADES from '../../grades/list/GradesList';
 import CustomAppBar from '../../components/CustomAppBar';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
   function Item({
     id,
     title,
@@ -63,6 +57,7 @@ const HomeScreen = ({navigation}) => {
     [selected],
   );
   this.gradeData = GRADES;
+  var refresh = false;
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -83,6 +78,8 @@ const HomeScreen = ({navigation}) => {
         )}
         keyExtractor={item => item.id}
         extraData={selected}
+        onRefresh={() => (refresh = false)}
+        refreshing={refresh}
       />
     </SafeAreaView>
   );
